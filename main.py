@@ -154,7 +154,7 @@ class Dealer(Player1):
         dealer hand value is greater than 16
         """
         # dealer will not take cards from deck if both player are busted if one is busted it will take cards if both it will not
-        if check_winner.player1_out is False or check_winner.player2_out is False:
+        if deck.total_hands(hand1) <= 21 or deck.total_hands(hand2) <= 21
             global dealer_turn
             while dealer_turn is True and deck.total_hands(self.hand) <= 16:
                 self.add_card()
@@ -584,11 +584,11 @@ while True:
                 main_screen.hand_value_dealer(value3)
             main_screen.hand_value_hanzala(value1)
             main_screen.hand_value_ahmad(value2)
+            dealer.dealer_take_cards()  # so dealer can get  multiple cards if cards  value is less than 17
 
             if dealer_turn is True:
                 check_winner.check_black_jack()
                 check_winner.check_busted()
-                dealer.dealer_take_cards()  # so dealer can get  multiple cards if cards  value is less than 17
                 check_winner.check_equal()
                 check_winner.compare_hands()
                 check_winner.show_each_message()
